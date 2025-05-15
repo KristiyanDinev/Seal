@@ -21,8 +21,9 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
 
-    - uses: gradle/actions/setup-gradle@v3
-
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4
+      
     - run: gradle assembleRelease
 
     - name: Sign app APK
@@ -41,4 +42,3 @@ jobs:
         name: signed-apks
         path: app/build/outputs/apk/release/*-arm64-v8a-release-signed.apk
         if-no-files-found: error
-        retention-days: 20
